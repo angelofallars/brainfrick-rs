@@ -1,5 +1,6 @@
 use std::fs::File;
 use std::io::Read;
+use std::process::exit;
 
 use clap::Parser;
 
@@ -22,7 +23,18 @@ struct Args {
 fn main() -> std::io::Result<()> {
     let args = Args::parse();
 
-    let mut file = File::open(args.file_name)?;
+    let file = File::open(&args.file_name);
+    if let Err(err) = file {
+        let err_kind = err.to_string();
+
+        println!(
+            "brainfrick: can't open file '{}': {}",
+            args.file_name, err_kind
+        );
+        exit(1);
+    }
+    let mut file = file.unwrap();
+
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
 
