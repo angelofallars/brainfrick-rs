@@ -10,4 +10,5 @@ name = "brainfrick"
 path = "src/main.rs"
 
 [dependencies]
+clap = { version = "3.2.16", features = ["derive"] }
 getch = "0.3.1"

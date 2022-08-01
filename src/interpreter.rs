@@ -47,6 +47,12 @@ pub fn create_byte_cells() -> [u8; CELL_COUNT] {
     [0; CELL_COUNT]
 }
 
+pub fn interpret_contents(contents: String) -> Result<(), Error> {
+    let mut byte_cells = create_byte_cells();
+    process_commands(&mut byte_cells, contents)?;
+    Ok(())
+}
+
 pub fn process_commands(byte_cells: &mut [u8; CELL_COUNT], commands: String) -> Result<(), Error> {
     let mut data_pointer: DataPointer = DataPointer::new();
     let bytes = commands.as_bytes();
