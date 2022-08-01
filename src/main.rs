@@ -1,4 +1,6 @@
 mod interpreter;
+mod utils;
+
 mod test;
 
 fn main() {
