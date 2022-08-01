@@ -1,6 +1,7 @@
 mod interpreter;
 mod utils;
 
+#[cfg(test)]
 mod test;
 
 fn main() {
